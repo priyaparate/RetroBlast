@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ];
 
-    // --- Dynamic Card Generation and Event Listeners ---
     function generateGameCards() {
         gameGrid.innerHTML = '';
         gameGrid.classList.remove('loading-grid');
