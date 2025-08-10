@@ -44,17 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
             playableUrl:"https://zv1y2i8p.play.gamezop.com/g/S1VZ-LjQUUl" 
         },
         {
-            title: "Pixel Fighter",
-            description: "A classic 8-bit fighting game with special moves.",
+            title: "Brick Plunge",
+            description: "Are you nostalgic of the timeless brick arranging game? Who isn't? You are in the right place!",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpXKGKCYOmbV8I8VzOWFRKRsQWMS7bkpLaag&s",
             playableUrl:"https://zv1y2i8p.play.gamezop.com/g/BJ9bvzIKdJl" 
         },
         {
-            title: "Asteroid Commando",
-            description: "Blast your way through waves of alien ships.",
-            image: "https://via.placeholder.com/250x150/E0E0FF/000000?text=GAME+4",
-            link: "#",
-            apiId: 510
+            title: "Super Mario",
+            description: "Hey! , it's me Mario!",
+            image: "https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png",
+            playableUrl:"https://funhtml5games.com/?play=mariojump" 
         },
         {
             title: "Starship Defense",
