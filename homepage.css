@@ -1,0 +1,362 @@
+/* Custom CSS Variables for the Galactic Purple Palette */
+:root {
+    --purple-dark: #0e001b;
+    --purple-medium: #4A0078;
+    --purple-light: #ff00d4;
+    --purple-bright: #ff00ff;
+    --purple-glow: #F2A3FF;
+    --text-color: #ffe0fb; 
+    --accent-yellow: #FFFF66; /* A contrasting accent for highlights */
+}
+
+/* Global Styles for Retro Vibe */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-smooth: never; /* No font smoothing */
+    -webkit-font-smoothing: none;
+    image-rendering: pixelated; /* Essential for crisp pixel art */
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--purple-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Pixelated Text Glitch Effect */
+.pixel-text {
+    text-shadow: 
+        1px 1px 0px var(--purple-dark),
+        -1px -1px 0px var(--purple-dark),
+        1px -1px 0px var(--purple-dark),
+        -1px 1px 0px var(--purple-dark);
+    letter-spacing: 2px;
+}
+
+.glitch-text {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.glitch-text:hover {
+    color: var(--accent-yellow);
+    text-shadow: none;
+}
+
+/* Glitch effect on hover */
+.glitch-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--purple-bright);
+    background: var(--purple-dark);
+    overflow: hidden;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.3s ease-out;
+    pointer-events: none;
+}
+.glitch-text:hover::before {
+    animation: glitch-anim 0.4s steps(2, jump-start) infinite;
+    clip-path: inset(0);
+}
+
+@keyframes glitch-anim {
+    0% { clip-path: inset(0 0 100% 0); }
+    33% { clip-path: inset(0 0 0 100%); }
+    66% { clip-path: inset(100% 0 0 0); }
+    100% { clip-path: inset(0 0 100% 0); }
+}
+
+
+/* --- Header and Nav Bar --- */
+.retro-header {
+    background-color: var(--purple-dark);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 2px solid var(--purple-medium);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 -2px 0 0 var(--purple-light); /* Shadow and inner line */
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
+
+.retro-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 2; /* Ensure nav content is above the background glow */
+}
+
+/* Navigation Logo */
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--purple-light);
+    text-decoration: none;
+    text-shadow: 0 0 5px var(--purple-light), 0 0 10px var(--purple-light); /* Light glow */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-logo:hover {
+    color: var(--accent-yellow);
+    text-shadow: 0 0 5px var(--accent-yellow), 0 0 15px var(--accent-yellow);
+}
+
+/* Nav Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+/* Underline Animation (from the '90s) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--purple-bright);
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Easing for cool effect */
+    box-shadow: 0 0 5px var(--purple-bright);
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* Bottom Bar with Scanline Effect */
+.nav-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Height of the bar */
+    background: linear-gradient(
+        90deg,
+        var(--purple-medium) 0%,
+        var(--purple-bright) 50%,
+        var(--purple-medium) 100%
+    );
+    animation: scanline-flow 15s linear infinite;
+    z-index: 1;
+}
+
+@keyframes scanline-flow {
+    0% { background-position: -500px 0; }
+    100% { background-position: 500px 0; }
+}
+
+/* Hover/Active State Animation for links */
+.nav-link:hover {
+    transform: translateY(-2px); /* Slight lift effect */
+    color: var(--purple-glow);
+    text-shadow: 0 0 8px var(--purple-glow), 0 0 15px var(--purple-glow);
+}
+
+.nav-link:active {
+    transform: translateY(0);
+    color: var(--purple-bright);
+    text-shadow: 0 0 5px var(--purple-bright);
+}
+
+/* Main content for demonstration purposes */
+.content {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    color: var(--purple-bright);
+    margin-bottom: 1rem;
+}
+
+.content p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* --- New Game Grid Styles --- */
+.game-content {
+    position: relative;
+    z-index: 1; /* Keep this content above the background */
+    padding: 8rem 2rem; /* Top padding to accommodate the fixed nav bar */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--purple-bright);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0 var(--purple-dark);
+}
+
+#game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+
+.game-card {
+    background-color: var(--purple-dark);
+    border: 3px solid var(--purple-light);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 5px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0; /* Initially hidden for fade-in animation */
+    animation: fade-in 0.5s forwards;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.03); /* Lift and grow effect */
+    box-shadow: 0 8px 25px rgba(206, 101, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.game-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(206, 101, 255, 0.5);
+}
+
+.card-image-container {
+    width: 100%;
+    height: 150px;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--purple-light);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: pixelated;
+    transition: transform 0.3s ease-out;
+}
+
+.game-card:hover .card-image {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.card-content {
+    padding: 1rem;
+    position: relative;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: var(--accent-yellow);
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 0 var(--purple-dark);
+    transition: color 0.3s ease;
+}
+
+.card-description {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+/* Retro Button within card */
+.play-btn {
+    background-color: var(--purple-light);
+    color: var(--purple-dark);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border: none;
+    box-shadow: 2px 2px 0 var(--purple-medium);
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    cursor: pointer;
+}
+.play-btn:hover {
+    background-color: var(--purple-bright);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--purple-medium);
+}
+.play-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* Initial "Loading" Animation */
+.loading-grid .loading-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 3px dashed var(--purple-medium);
+    min-height: 250px;
+    animation: pulse-loading 1.5s infinite ease-in-out alternate;
+    border-radius: 8px;
+}
+
+@keyframes pulse-loading {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Game card fade-in animation (for when JS creates them) */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+#game-details-container {
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7); /* A semi-transparent overlay */
+    border: 3px solid var(--purple-light);
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#game-details-container.hidden {
+    display: none;
+}
+
+#back-to-grid-btn {
+    margin-bottom: 20px;
+    background-color: var(--purple-light);
+    color: var(--purple-dark);
+}
+
+#game-display {
+    text-align: center;
+    /* Styles for your API-fetched game content */
+}
