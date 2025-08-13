@@ -56,20 +56,30 @@ document.addEventListener('DOMContentLoaded', () => {
             playableUrl:"https://funhtml5games.com/?play=mariojump" 
         },
         {
-            title: "Starship Defense",
-            description: "Protect your space station from invading forces.",
-            image: "https://via.placeholder.com/250x150/8E00FF/000000?text=GAME+5",
-            link: "#",
-            apiId: 517
+            title: "Sonic the Hedgehog",
+            description: "Gotta Go Fast",
+            image: "https://m.gjcdn.net/game-header/950/429794-x7hp4xub-v4.jpg",
+            playableUrl:"https://funhtml5games.com?embed=sonic" 
         },
         {
-            title: "Cosmic Quest",
-            description: "An epic RPG journey across the galaxy.",
-            image: "https://via.placeholder.com/250x150/CE65FF/000000?text=GAME+6",
-            link: "#",
-            apiId: 508
-        },
-    ];
+            title: "Pac Man",
+            description: "A labyrinth of fun & amusement!.",
+            image: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/08/pacman.jpg",
+            playableUrl:"https://funhtml5games.com?embed=pacman" 
+},
+        {
+            title: "Space Invaders",
+            description: "Stop the alien invasion!.",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmjmro8wDG7Aqo8YWD_0s6VYYwZCfUQbGqg&s",
+            playableUrl:"https://funhtml5games.com?embed=spaceinvaders"
+},
+{
+            title: "Flappy Bird",
+            description: "Tap to Fly, Die to Try",
+            image: "https://c4.wallpaperflare.com/wallpaper/838/630/344/flappy-bird-game-popular-news-wallpaper-preview.jpg",
+            playableUrl:"https://funhtml5games.com?embed=flappy" 
+   }
+ ];
 
 
     // --- Game Logic Functions ---
