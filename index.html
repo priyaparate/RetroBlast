@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro_Blast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="retro.css" />
+    <script src="blast.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="pixel-bg">
+        <div class="pixel-grid"></div>
+    </div>
+    
+    <div class="scanlines"></div>
+    <div class="crt-effect"></div>
+    <!-- Animated Header -->
+    <header class="header-animation">
+        <div class="pac-man"></div>
+        <div class="ghost ghost1"></div>
+        <div class="ghost ghost2"></div>
+        <div class="ghost ghost3"></div>
+        <div class="ghost ghost4"></div>
+         
+    </header>
+    
+    <!-- Logo and Website Name -->
+    <div class="container mx-auto px-4 py-8 text-center">
+        <div class="floating mb-4">
+            <svg class="w-40 h-40 mx-auto" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="20" width="160" height="160" rx="15" fill="#2d1b4e" stroke="#00ffff" stroke-width="4"/>
+                <rect x="40" y="40" width="120" height="80" rx="5" fill="#120b1e" stroke="#ff00ff" stroke-width="3"/>
+                <circle cx="70" cy="140" r="15" fill="#ff0000"/>
+                <circle cx="110" cy="140" r="15" fill="#00ff00"/>
+                <circle cx="150" cy="140" r="15" fill="#0000ff"/>
+                <path d="M60 60 L90 60 L90 100 L60 100 Z" fill="#ffff00"/>
+                <path d="M110 60 L140 60 L140 100 L110 100 Z" fill="#00ffff"/>
+            </svg>
+        </div>
+        <h1 class="retro-title text-4xl md:text-6xl text-white mb-4">RETRO_BLAST</h1>
+        <p class="neon-text text-xl md:text-2xl mb-8">Press Start to Continue...</p>
+    </div>
+    
+   <!-- Information Section -->
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <div class="bg-opacity-30 bg-purple-900 backdrop-blur-sm p-12 rounded-lg border-2 border-purple-500 shadow-lg info-container">
+            <div class="info-text text-xl md:text-2xl text-white mb-12">
+                Step back in time and relive the golden age of gaming — right in your browser! 
+                Retro Rewind Arcade is your one-stop destination to play the legendary classics 
+                that defined generations.
+            </div>
+            
+            <div class="info-text text-xl md:text-2xl text-white mb-12">
+                Whether you're dodging ghosts in Pac-Man, blasting invaders in Space Invaders, 
+                or stacking blocks in Tetris, our mission is simple: bring timeless fun back 
+                to life for gamers old and new.
+            </div>
+            
+            <div class="info-text text-xl md:text-2xl text-white">
+                No downloads, no complicated setup — just pick a game, hit play, and get lost 
+                in the pixel magic. Challenge your friends, beat the high scores, and discover 
+                why these games never get old.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Call to Action -->
+    <div class="container mx-auto px-4 py-12 text-center">
+        <h2 class="retro-title text-2xl md:text-4xl text-white mb-8">Ready to press Start?</h2>
+        <p class="neon-text text-xl md:text-2xl mb-8">Your next high score is waiting!</p>
+        <button class="neon-button text-lg md:text-xl mb-12" onclick="alert('Welcome to Retro Rewind Arcade! Game library loading...')">LET'S GET STARTED</button>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-purple-900 bg-opacity-30 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-purple-300">&copy; 2025 Retro_Blast | All Rights Reserved</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="text-purple-300 hover:text-white">About</a>
+                <a href="#" class="text-purple-300 hover:text-white">Contact</a>
+                <a href="#" class="text-purple-300 hover:text-white">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>

@@ -1,0 +1,176 @@
+body {
+            font-family: 'VT323', monospace;
+            background-color: #120b1e;
+            overflow-x: hidden;
+        }
+        
+        .pixel-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(rgba(18, 11, 30, 0.85), rgba(18, 11, 30, 0.95));
+        }
+        
+        .pixel-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(66, 33, 99, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(66, 33, 99, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .retro-title {
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+        }
+        
+        .neon-text {
+            color: #fff;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+        }
+        
+        .neon-button {
+            position: relative;
+            display: inline-block;
+            padding: 15px 30px;
+            font-family: 'Press Start 2P', cursive;
+            color: #00ffff;
+            background: transparent;
+            border: 2px solid #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+            box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff inset;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .neon-button:hover {
+            background: #00ffff;
+            color: #120b1e;
+            box-shadow: 0 0 10px #00ffff, 0 0 30px #00ffff inset;
+            text-shadow: none;
+        }
+        
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .neon-button:hover::before {
+            left: 100%;
+        }
+        
+        .header-animation {
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+            background: #1a0b2e;
+        }
+        
+        .pac-man {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffff00;
+            border-radius: 50%;
+            top: 25px;
+            animation: move 15s linear infinite, chomp 0.3s linear infinite;
+        }
+        
+        .ghost {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 25px;
+            border-radius: 15px 15px 0 0;
+            animation: move 15s linear infinite;
+        }
+        
+        .ghost::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 5px;
+            background: inherit;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .ghost1 { background: #ff0000; left: 100px; animation-delay: 0.5s; }
+        .ghost2 { background: #00ffff; left: 150px; animation-delay: 1s; }
+        .ghost3 { background: #ffb8ff; left: 200px; animation-delay: 1.5s; }
+        .ghost4 { background: #ffb852; left: 250px; animation-delay: 2s; }
+        
+        .pellet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fdfcfc;
+            border-radius: 50%;
+            top: 37px;
+        }
+        
+        @keyframes move {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(calc(100vw + 50px)); }
+        }
+        
+        @keyframes chomp {
+            0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            50% { clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%); }
+            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+        
+        .crt-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 11;
+            box-shadow: inset 0 0 100px rgba(8, 8, 8, 0.9);
+        }
+        
+   
