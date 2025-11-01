@@ -1,0 +1,139 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: #000;
+  color: #0ff;
+  text-align: center;
+}
+
+/* Header */
+.retro-header {
+  background: #111;
+  padding: 10px;
+  border-bottom: 2px solid #0ff;
+}
+
+.retro-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 18px;
+  color: #0ff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: #0ff;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.nav-link.active {
+  color: #ff0;
+}
+
+/* Contact Page */
+.contact-content {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #ff0;
+}
+
+.contact-intro {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #0ff;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #0ff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff inset;
+}
+
+.contact-form label {
+  font-size: 10px;
+  color: #ff0;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #111;
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12px;
+  color: #0ff;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #f0f;
+  box-shadow: 0 0 8px #f0f;
+}
+
+.submit-btn {
+  background: #111;
+  border: 2px solid #ff0;
+  color: #ff0;
+  padding: 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+  background: #ff0;
+  color: #000;
+  box-shadow: 0 0 10px #ff0, 0 0 20px #ff0;
+}
+
+/* Support Info */
+.support-info {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #0ff;
+  line-height: 1.8;
+}
+
+/* Footer */
+.retro-footer {
+  background: #111;
+  padding: 20px;
+  border-top: 2px solid #0ff;
+  margin-top: 40px;
+}
+
+.footer-bottom {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #888;
+}
