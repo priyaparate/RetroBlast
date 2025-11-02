@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Retro_Blast</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <!-- Link external CSS -->
-  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='about.css') }}">
 </head>
 <body>
   <!-- Header -->
   <header class="retro-header">
     <nav class="retro-nav">
-      <a href="homepage.html" class="nav-logo">Retro_Blast</a>
+      <a href="/games" class="nav-logo">Retro_Blast</a>
       <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">HOME</a></li>
-        <li><a href="homepage.html" class="nav-link">GAMES</a></li>
-        <li><a href="about.html" class="nav-link active">ABOUT</a></li>
-        <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+        <li><a href="/" class="nav-link">HOME</a></li>
+        <li><a href="/games" class="nav-link">GAMES</a></li>
+        <li><a href="/about" class="nav-link active">ABOUT</a></li>
+        <li><a href="/contact" class="nav-link">CONTACT</a></li>
       </ul>
     </nav>
   </header>

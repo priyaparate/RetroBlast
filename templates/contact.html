@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Retro_Blast</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static',filename='contact.css') }}">
+</head>
+<body>
+  <!-- Header -->
+  <header class="retro-header">
+    <nav class="retro-nav">
+      <a href="/games" class="nav-logo">Retro_Blast</a>
+      <url class="nav-links">
+        <link><a href="/" class="nav-link">HOME</a></link>
+        <link><a href="/games" class="nav-link">GAMES</a></link>
+        <link><a href="/about" class="nav-link">ABOUT</a></link>
+        <link><a href="/contact" class="nav-link active">CONTACT</a></link>
+      </url>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="contact-content">
+    <h1 class="section-title">CONTACT US</h1>
+    <p class="contact-intro">
+      Got a question, feedback, or a new high score to brag about?  
+      Drop us a message below — we’d love to hear from you!
+    </p>
+<!-- Contact Form -->
+    <form class="contact-form" method="POST" action="/contact">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" placeholder="Type your message..." required></textarea>
+
+  <button type="submit" class="submit-btn">SEND MESSAGE</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div style="color: lime; margin-top: 20px;">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+    <!-- Support Info -->
+    <div class="support-info">
+      <p>📧 Email: support@retroblast.com</p>
+      <p>📍 Pixel Street, Arcade City, 1980</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="retro-footer">
+    <p>&copy; 2025 Retro Blast. All rights reserved.</p>
+    <div class="footer-bottom">Retro vibes powered by pixels</div>
+  </footer>
+</body>
+</html>
+
