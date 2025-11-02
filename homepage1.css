@@ -1,0 +1,629 @@
+/*
+ * HOMEPAGE.CSS
+ * Theme: Retro Futurism / 1980s Cyberpunk (Synthwave/Outrun)
+ * Author: Gemini
+ * Description: Styles for the Retro_Blast gaming portal.
+ */
+
+/* --- ROOT VARIABLES (Synthwave Palette) --- */
+:root {
+    --purple-dark: #0d0221;    /* Deep space background */
+    --purple-mid: #24193b;      /* Card/Footer background */
+    --purple-light: #5f00b3;   /* Accent & shadow color */
+    --purple-bright: #aa00ff; /* Neon Magenta/Purple */
+    --cyan-bright: #00f0ff;     /* Neon Cyan */
+    --pink-bright: #ff00ff;     /* Neon Pink/Magenta */
+    --text-light: #e0e0e0;      /* Main body text */
+    --font-primary: 'Press Start 2P', cursive;
+}
+
+/* --- GLOBAL & BODY --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Enforces crisp, pixelated scaling for images */
+    image-rendering: pixelated; 
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--purple-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    /* Global text shadow for that CRT glow */
+    text-shadow: 0 0 4px var(--cyan-bright), 0 0 6px var(--purple-bright);
+}
+
+a {
+    color: var(--cyan-bright);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--pink-bright);
+    text-shadow: 0 0 10px var(--pink-bright);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- RETRO BACKGROUND EFFECTS (CRT & AURORA) --- */
+#retro-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* The faint scanlines of an old monitor */
+.crt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 3px,
+            rgba(0, 0, 0, 0.2) 4px /* Scanlines */
+        );
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Vignette effect to mimic curved glass */
+.crt-overlay::after { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 80px 40px rgba(0,0,0,0.5);
+    border-radius: 10px; /* Subtle curve */
+}
+
+/* Soft, pulsing light bloom */
+.aurora {
+    position: absolute;
+    width: 150vw;
+    height: 150vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+        var(--purple-light) 0%,
+        var(--purple-mid) 30%,
+        var(--purple-dark) 60%
+    );
+    opacity: 0.3;
+    animation: aurora-pulse 15s infinite alternate ease-in-out;
+}
+
+@keyframes aurora-pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.2; }
+    100% { transform: translate(-45%, -55%) scale(1.2); opacity: 0.4; }
+}
+
+/* --- HEADER & NAVIGATION (COMMAND BAR) --- */
+.retro-header {
+    width: 100%;
+    background: rgba(13, 2, 33, 0.8); /* Dark, semi-transparent */
+    border-bottom: 2px solid var(--cyan-bright);
+    box-shadow: 0 0 15px var(--cyan-bright);
+    padding: 10px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(3px); /* Glassy effect */
+}
+
+.retro-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* For mobile */
+}
+
+.nav-logo {
+    font-size: 1.5rem; /* 24px */
+    color: var(--pink-bright);
+    text-shadow: 0 0 8px var(--pink-bright);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    font-size: 1rem; /* 16px */
+    padding: 5px 0;
+    position: relative;
+    color: var(--cyan-bright);
+}
+
+/* Underline hover effect */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--pink-bright);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 8px var(--pink-bright);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Decorative neon bar */
+.nav-bottom-bar {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan-bright), var(--pink-bright), var(--cyan-bright));
+    margin-top: 10px;
+    opacity: 0.7;
+    box-shadow: 0 0 10px var(--pink-bright);
+}
+
+/* --- TEXT STYLES & GLITCH EFFECT --- */
+.pixel-text {
+    font-family: var(--font-primary);
+}
+
+.glitch-text {
+    position: relative;
+}
+
+/* The glitch effect uses two pseudo-elements to create color channel separation */
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--purple-dark); /* Match body bg */
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch-text::before {
+    left: -2px;
+    text-shadow: 2px 0 var(--pink-bright);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: 2px;
+    text-shadow: -2px 0 var(--cyan-bright);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* Keyframes for the glitching "clip" rectangle */
+@keyframes glitch-anim-1 {
+    0% { clip: rect(42px, 9999px, 44px, 0); }
+    5% { clip: rect(12px, 9999px, 59px, 0); }
+    10% { clip: rect(35px, 9999px, 40px, 0); }
+    20% { clip: rect(50px, 9999px, 60px, 0); }
+    30% { clip: rect(10px, 9999px, 25px, 0); }
+    40% { clip: rect(70px, 9999px, 85px, 0); }
+    50% { clip: rect(30px, 9999px, 45px, 0); }
+    60% { clip: rect(80px, 9999px, 95px, 0); }
+    70% { clip: rect(22px, 9999px, 33px, 0); }
+    80% { clip: rect(60px, 9999px, 75px, 0); }
+    90% { clip: rect(5px, 9999px, 15px, 0); }
+    100% { clip: rect(90px, 9999px, 98px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(65px, 9999px, 100px, 0); }
+    3% { clip: rect(40px, 9999px, 55px, 0); }
+    10% { clip: rect(15px, 9999px, 30px, 0); }
+    20% { clip: rect(75px, 9999px, 90px, 0); }
+    30% { clip: rect(55px, 9999px, 70px, 0); }
+    40% { clip: rect(5px, 9999px, 20px, 0); }
+    50% { clip: rect(85px, 9999px, 100px, 0); }
+    60% { clip: rect(45px, 9999px, 60px, 0); }
+    70% { clip: rect(90px, 9999px, 100px, 0); }
+    80% { clip: rect(10px, 9999px, 25px, 0); }
+    90% { clip: rect(70px, 9999px, 85px, 0); }
+    100% { clip: rect(20px, 9999px, 35px, 0); }
+}
+
+/* --- MAIN CONTENT (HERO) --- */
+.content {
+    text-align: center;
+    padding: 60px 20px;
+}
+.content h1 {
+    font-size: 2.5rem;
+    color: var(--pink-bright);
+    margin-bottom: 10px;
+}
+.content p {
+    font-size: 1.2rem;
+    color: var(--cyan-bright);
+}
+
+/* --- GAME LIBRARY (MODULAR GRID) --- */
+.game-content {
+    padding: 20px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--cyan-bright);
+}
+
+#game-grid {
+    display: grid;
+    /* Responsive grid: creates columns of at least 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Loading Card Pulse Animation */
+.loading-card {
+    height: 350px;
+    background: var(--purple-mid);
+    border: 2px solid var(--purple-light);
+    animation: pulse-loading 1.5s infinite alternate;
+}
+
+@keyframes pulse-loading {
+    0% { 
+        background-color: var(--purple-mid);
+        box-shadow: 0 0 10px var(--purple-light);
+    }
+    100% { 
+        background-color: #3a2d5c; /* Lighter mid-purple */
+        box-shadow: 0 0 15px var(--purple-light);
+    }
+}
+
+/* --- (Future) Game Card Style --- */
+/* These styles will apply once you load actual game data */
+.game-card {
+    background: var(--purple-mid);
+    border: 2px solid var(--purple-light);
+    box-shadow: 0 0 10px var(--purple-light);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 20px var(--cyan-bright);
+    border-color: var(--cyan-bright);
+}
+
+.game-card-img {
+    width: 100%;
+    height: 200px;
+    background-color: #000; /* Placeholder bg */
+    object-fit: cover;
+    border-bottom: 2px solid var(--purple-light);
+}
+
+.game-card-info {
+    padding: 20px;
+    flex-grow: 1; /* Ensures footer of card aligns */
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card-info h3 {
+    font-size: 1.2rem;
+    color: var(--cyan-bright);
+    margin-bottom: 10px;
+}
+
+.game-card-info p {
+    font-size: 0.8rem;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: none; /* Make description text cleaner */
+}
+
+/* Style for the "PLAY NOW" button on the game card */
+.play-btn {
+    /* Base styles from .retro-button */
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    border: none;
+    padding: 15px 20px; /* Slightly less padding for full-width */
+    text-shadow: none; /* Clean button text */
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--purple-light);
+    transition: all 0.1s ease-in-out;
+    display: block; /* Make it a block element */
+    text-align: center;
+    width: 100%; /* Make it full width */
+
+    /* Specific overrides for Play button */
+    background-color: var(--pink-bright); /* Make it stand out */
+    color: var(--purple-dark);
+}
+
+.play-btn:hover {
+    background-color: var(--cyan-bright);
+    color: var(--purple-dark);
+    box-shadow: 4px 4px 0px var(--pink-bright);
+}
+
+.play-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--purple-light);
+}
+
+
+/* --- TACTILE RETRO BUTTONS --- */
+.retro-button {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    background-color: var(--cyan-bright);
+    color: var(--purple-dark);
+    border: none;
+    padding: 15px 25px;
+    text-shadow: none; /* Clean button text */
+    cursor: pointer;
+    /* The "blocky" 3D shadow for tactile feel */
+    box-shadow: 4px 4px 0px var(--purple-light);
+    transition: all 0.1s ease-in-out;
+    display: inline-block; 
+}
+
+.retro-button:hover {
+    background-color: var(--pink-bright);
+    color: var(--text-light);
+    box-shadow: 4px 4px 0px var(--cyan-bright);
+}
+
+/* Simulates the button being pressed down */
+.retro-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--purple-light);
+}
+
+/* --- GAME MODAL (ARCADE CABINET) --- */
+#game-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 2, 33, 0.95); /* Near opaque */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* 'hidden' class to be toggled by JS */
+#game-modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#game-modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 90vh; /* Leave some space */
+    background: #000;
+    border: 3px solid var(--cyan-bright);
+    box-shadow: 0 0 25px var(--cyan-bright);
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-close-btn {
+    padding: 10px 15px;
+    font-size: 0.8rem;
+    align-self: flex-end; /* Position to top right */
+    margin: 10px;
+}
+
+#game-display {
+    flex-grow: 1; /* Take remaining space */
+    background: #111; /* Fallback if iframe fails */
+    border-top: 2px solid var(--purple-light);
+    overflow: hidden;
+}
+
+#game-display iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- FOOTER (DATA STREAM) --- */
+.retro-footer {
+    background: var(--purple-mid);
+    color: var(--text-light);
+    border-top: 2px solid var(--pink-bright);
+    box-shadow: 0 0 15px var(--pink-bright);
+    padding-top: 40px;
+    margin-top: 50px;
+    font-size: 0.8rem;
+    text-shadow: none; /* Cleaner text for footer */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section h4 {
+    font-size: 1rem;
+    color: var(--cyan-bright);
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--cyan-bright);
+}
+
+.footer-section p,
+.footer-section li {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.footer-section a {
+    color: var(--text-light);
+    text-shadow: none;
+}
+.footer-section a:hover {
+    color: var(--cyan-bright);
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Placeholder for Font Awesome icons */
+.social-icons a {
+    font-size: 1.5rem; 
+    color: var(--text-light);
+}
+.social-icons a:hover {
+    color: var(--pink-bright);
+    transform: scale(1.1);
+}
+
+/* Footer Glitch Banner */
+.footer-glitch-banner {
+    width: 100%;
+    background: var(--purple-dark);
+    padding: 20px 0;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.footer-glitch-banner .glitch-text {
+    font-size: 2rem;
+    color: var(--text-light);
+    display: inline-block;
+    text-shadow: 0 0 5px var(--pink-bright);
+}
+
+/* Simpler flicker/shift animation for footer banner */
+.footer-glitch-banner .glitch-text span {
+    display: inline-block;
+    animation: footer-glitch-flicker 5s infinite;
+}
+
+@keyframes footer-glitch-flicker {
+    0%, 100% { opacity: 1; transform: none; }
+    50% { opacity: 0.8; transform: skewX(-5deg); text-shadow: 0 0 10px var(--pink-bright); }
+    52% { opacity: 1; transform: none; }
+    60% { opacity: 0.9; text-shadow: 0 0 10px var(--cyan-bright); }
+    61% { opacity: 1; }
+}
+
+/* Stagger the animation for a more random feel */
+.footer-glitch-banner .glitch-text span:nth-child(2) { animation-delay: 0.1s; }
+.footer-glitch-banner .glitch-text span:nth-child(3) { animation-delay: 0.3s; }
+.footer-glitch-banner .glitch-text span:nth-child(4) { animation-delay: 0.2s; }
+.footer-glitch-banner .glitch-text span:nth-child(5) { animation-delay: 0.4s; }
+.footer-glitch-banner .glitch-text span:nth-child(7) { animation-delay: 0.5s; }
+.footer-glitch-banner .glitch-text span:nth-child(8) { animation-delay: 0.15s; }
+.footer-glitch-banner .glitch-text span:nth-child(9) { animation-delay: 0.35s; }
+.footer-glitch-banner .glitch-text span:nth-child(10) { animation-delay: 0.25s; }
+.footer-glitch-banner .glitch-text span:nth-child(11) { animation-delay: 0.45s; }
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    font-size: 0.7rem;
+    margin-top: 30px;
+    color: #888;
+    text-shadow: none;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    .retro-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+    .content p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    #game-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    .footer-glitch-banner .glitch-text {
+        font-size: 1.5rem;
+    }
+
+    /* Make modal full-screen on mobile */
+    #game-modal-content {
+        max-height: 100vh;
+        border: none;
+    }
+    #modal-close-btn {
+        margin: 5px;
+        padding: 8px 12px;
+    }
+}
+
