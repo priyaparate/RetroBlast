@@ -3,10 +3,9 @@ const clickSound = new Audio("https://freesound.org/data/previews/522/522585_115
 
 document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
     clickSound.play();
     setTimeout(() => {
-      alert("✅ Action successful! (UI only)");
+      alert("✅ Action successful!");
     }, 200);
   });
 });
