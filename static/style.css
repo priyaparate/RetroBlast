@@ -83,6 +83,21 @@ input:focus {
   margin-top: 5px;
 }
 
+.form-label {
+  display: block;
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+  color: #00ffff;
+  font-size: 0.8rem;
+}
+
+.flash-message {
+  color: #ff0099;
+  margin-top: 15px;
+  font-size: 0.8rem;
+}
+
 .fade-in {
   animation: fadeIn 1.5s ease-in;
 }

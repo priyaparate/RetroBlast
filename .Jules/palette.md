@@ -1,0 +1,3 @@
+## 2026-01-10 - [Accessibility and Feedback for Auth Forms]
+**Learning:** The application's login and signup forms were completely inaccessible (missing labels) and provided no feedback on errors (missing flash messages). Users rely on clear feedback and labels are non-negotiable for screen readers.
+**Action:** Always check `get_flashed_messages()` implementation in templates for auth pages. Ensure every input has a corresponding label, using explicit association (`for`/`id`). Reused existing design tokens (colors) but created new semantic classes `.form-label` and `.flash-message` to maintain cleaner code than inline styles.
