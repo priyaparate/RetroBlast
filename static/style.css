@@ -147,3 +147,13 @@ button:active {
   z-index: -1;   /* keeps it behind the form */
   background: black;
 }
+
+/* Accessibility Improvements */
+form label {
+  display: block;
+  text-align: left;
+  color: #ffcc00;
+  font-size: 0.8rem;
+  width: 90%;
+  margin: 10px auto 5px auto;
+}
