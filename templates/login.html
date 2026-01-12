@@ -13,12 +13,20 @@
   <div class="form-container fade-in">
     <h1 class="title">Retro Blast</h1>
     <h2 class="subtitle">Login</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div style="color: #ff0099; text-shadow: 0 0 5px #ff0099; margin-bottom: 1rem;">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
     
-      <form method="POST" action="/login">
-  <input type="text" name="username" placeholder="Username" required />
-  <input type="password" name="password" placeholder="Password" required />
-  <button type="submit" class="glow-button">Login</button>
-</form>
+    <form method="POST" action="/login">
+      <input type="text" name="username" placeholder="Username" aria-label="Username" required />
+      <input type="password" name="password" placeholder="Password" aria-label="Password" required />
+      <button type="submit" class="glow-button">Login</button>
+    </form>
     <div class="form-footer">
       <a href="/forgot-password">Forgot Password?</a><br>
       <a href="/signup">Don't have an account? Sign Up</a>
