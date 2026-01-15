@@ -1,1 +1,5 @@
-
+# databases 
+*.db
+*.sqbpro
+#venv
+venv/
