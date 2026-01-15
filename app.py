@@ -7,6 +7,38 @@ app.secret_key = 'retro_secret_key'
 USER_DB = 'Retro-Blast.db'   # For signup, login, forgot-password
 CONTACT_DB = 'retro.db'      # For contact page
 
+def init_db():
+    # USER DATABASE
+    conn = sqlite3.connect(USER_DB)
+    c = conn.cursor()
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS Users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        confirm_password TEXT NOT NULL
+    )
+    """)
+    conn.commit()
+    conn.close()
+
+    # CONTACT DATABASE
+    conn = sqlite3.connect(CONTACT_DB)
+    c = conn.cursor()
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS contact_messages (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        message TEXT NOT NULL
+    )
+    """)
+    conn.commit()
+    conn.close()
+
+init_db()
+
 @app.route('/')
 def home():
     return render_template('index.html')
