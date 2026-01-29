@@ -3,3 +3,7 @@
 *.sqbpro
 #venv
 venv/
+# logs
+*.log
+# python cache
+__pycache__/
