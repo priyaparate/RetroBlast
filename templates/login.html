@@ -13,6 +13,16 @@
   <div class="form-container fade-in">
     <h1 class="title">Retro Blast</h1>
     <h2 class="subtitle">Login</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages" role="alert" style="color: #ff0099; text-shadow: 0 0 5px #ff0099; margin-bottom: 1rem;">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
     
       <form method="POST" action="/login">
   <input type="text" name="username" placeholder="Username" required />
