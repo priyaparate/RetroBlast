@@ -3,3 +3,6 @@
 *.sqbpro
 #venv
 venv/
+# python artifacts
+__pycache__/
+*.pyc
